@@ -24,7 +24,6 @@ function initialize(){
             });
             marker.setMap(map);
             setTimeout(function(){ marker.setAnimation(null); }, 1400);
-            SearchByLocation(initialLocation);
         }, function(){
             handleNoGeolocation(browserSupportFlag);
         });
@@ -33,8 +32,8 @@ function initialize(){
         handleNoGeolocation(browserSupportFlag);
     }
     
-    var newyork = new google.maps.LatLng(40.69847032728747, -73.9514422416687);
     function handleNoGeolocation(errorFlag) {
+        var newyork = new google.maps.LatLng(40.69847032728747, -73.9514422416687);
             if (errorFlag == true) {
               alert("Geolocation service failed.");
               initialLocation = newyork;
@@ -45,17 +44,13 @@ function initialize(){
             map.setCenter(initialLocation);
       }
     
-    service = new google.maps.places.PlacesService(map);
-    
-    //create a marker from the result
-    
-}
+    service = new google.maps.places.PlacesService(map);    
+};
 
 //test function/ may have to change later
-function SearchByLocation(location){
-    //this needs to be dynamicly built using an event listener or something.
+function TestSearch(){
     var request = {
-        location: location, //center point to look around.
+        location: map.center, //center point to look around.
         radius: 500, //range to look (apears to be meters)
         query: 'italian restaurant'//text search, can limit with dropdown options.
     }; 
@@ -64,6 +59,14 @@ function SearchByLocation(location){
 
 function search(){
     //use this method to build the needed quary and collect response
+    /****** FORMAT ********
+    var request = { <<<<<< this is what needs to be built <<<<<<<
+        location: location, 
+        radius: [RANGE EX: 500], 
+        query: [KEYWORDS EX: "Mexican"]
+    }; 
+    service.textSearch(request, callback);
+    **********/
 }
 
 //parse the results of any query
