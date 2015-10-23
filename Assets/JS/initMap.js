@@ -1,6 +1,5 @@
 var browserAPIKey = "AIzaSyBFOLAH3N-pqX-S63W_97qKbvgt0TBW1ek";
-var infoWindow;
-var map, service;
+var infoWindow, map, service, markers = [];
 
 function initialize(){
     var mapCanvas = document.getElementById('map');
@@ -95,6 +94,7 @@ function CreateMarker(place){
              icon: icon,
              position: place.geometry.location
          });
+        markers.push(marker);
         //populate the info window
         google.maps.event.addListener(marker, 'mouseover', function(){
             infoWindow.setContent(place.name);
@@ -104,5 +104,17 @@ function CreateMarker(place){
             infoWindow.close();
         });
     }
+
+function ClearMarkers(){
+    markers.forEach(function(marker){
+         marker.setMap(null);
+    });
+    markers = [];
+    console.log("clear")
+}
+
+$("#ClearBtn").on('click', function(){
+    ClearMarkers();
+});
 
 google.maps.event.addDomListener(window, 'load', initialize);
