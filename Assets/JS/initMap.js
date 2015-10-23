@@ -48,6 +48,7 @@ function initialize(){
 
 //test function/ may have to change later
 function TestSearch(){
+    ClearMarkers();
     var request = {
         location: map.center, //center point to look around.
         radius: 500, //range to look (apears to be meters)
@@ -71,13 +72,24 @@ function search(){
 //parse the results of any query
 function callback(results, status){
     if(status === google.maps.places.PlacesServiceStatus.OK){
-        console.log(results);
         if(status === google.maps.places.PlacesServiceStatus.OK){
-            for (var i=0; i<results.length; i++){
-                CreateMarker(results[i]);
-            }
+            //parseAllResults(results);
+            RandomPick(results);
         }
     }
+}
+
+function parseAllResults(results){
+    for (var i=0; i<results.length; i++){
+        CreateMarker(results[i]);
+    }
+}
+
+function RandomPick(results){
+    var index = Math.floor(Math.random()*results.length);
+    console.log(results.length);
+    console.log(index);
+    CreateMarker(results[index]);
 }
 
 function CreateMarker(place){
@@ -110,7 +122,6 @@ function ClearMarkers(){
          marker.setMap(null);
     });
     markers = [];
-    console.log("clear")
 }
 
 $("#ClearBtn").on('click', function(){
