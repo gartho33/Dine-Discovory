@@ -87,8 +87,6 @@ function parseAllResults(results){
 
 function RandomPick(results){
     var index = Math.floor(Math.random()*results.length);
-    console.log(results.length);
-    console.log(index);
     CreateMarker(results[index]);
 }
 
@@ -109,13 +107,23 @@ function CreateMarker(place){
         markers.push(marker);
         //populate the info window
         google.maps.event.addListener(marker, 'mouseover', function(){
-            infoWindow.setContent(place.name);
+            var info = BuildInfowindow(place);
+            infoWindow.setContent(info);
             infoWindow.open(map, this);
         });
         google.maps.event.addListener(marker, 'mouseout', function(){
             infoWindow.close();
         });
     }
+
+function BuildInfowindow(place){
+    var info = "";
+    info += "<h1>"+place.name+"</h1>";
+    info += "<p>"+place.formatted_address+"</p>";
+    info += place.opening_hours.open_now ? "Open" : "Closed"
+    
+    return info;
+}
 
 function ClearMarkers(){
     markers.forEach(function(marker){
