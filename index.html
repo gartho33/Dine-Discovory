@@ -1,32 +1,122 @@
 <!DOCTYPE html>
 <head>
     <link rel="stylesheet" href="Assets/CSS/main.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 <!--    <script src="https://maps.googleapis.com/maps/api/js"></script>-->
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true&libraries=places"></script> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
 </head>
 
 <body>
+<div class="container">
     <header>
-        
+        <h1>Dine-Discovery</h1>
     </header>
-    
-    <section id="main">
-        <div id="map"></div>
-        
-        <section id="sandbox">
-            <div id="output"></div>
-            <button id="testBtn">test</button>
-            <button id="ClearBtn">Clear Markers</button>
+
+    <section class="row">
+        <section id="main" class="col-xs-6 pull-left">
+            <div id="map"></div>
+
+            <section id="sandbox">
+                <div id="output"></div>
+                <button id="testBtn">test</button>
+                <button id="ClearBtn">Clear Markers</button>
+            </section>
+        </section>
+        <section id="sidePanel" class="col-sm-3 pull-right">
+            <h4>Pick your Palate</h4>
+
+            <table class="table">
+                <tr>
+                    <td>
+                        <input type="checkbox" id="chinese"/>
+                        <label for="chinese" class="foodChecks">Chinese</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" id="japanese"/>
+                        <label for="japanese" class="foodChecks">Japanese</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" id="indian"/>
+                        <label for="indian" class="foodChecks">Indian</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="thai"/>
+                        <label for="thai" class="foodChecks">Thai</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" id="mexican"/>
+                        <label for="mexican" class="foodChecks">Mexican</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" id="greek"/>
+                        <label for="greek" class="foodChecks">Greek</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="Korean"/>
+                        <label for="korean" class="foodChecks">Korean</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" id="italian"/>
+                        <label for="italian" class="foodChecks">Italian</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" id="cajun"/>
+                        <label for="cajun" class="foodChecks">Cajun</label>
+                    </td>
+                </tr>
+            </table>
+
+            <p>None of those interest you? Search for a new taste!</p>
+            <div class="input-group">
+                <input type="text" id="keywordInput" class="form-control" placeholder="Search"/>
+                        <span class="input-group-btn">
+                        <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Go!</button>
+                      </span>
+            </div>
+
+            <section class="uiTest">
+                <label for="fader">How far do you want to travel?</label>
+                <input type="range" min="5" max="100" value="5" id="fader" step="5" list="milesettings" oninput="outputUpdate(value)">
+                <datalist id="milesettings">
+                    <option>5</option>
+                    <option>10</option>
+                    <option>20</option>
+                    <option>50</option>
+                    <option>75</option>
+                    <option>100</option>
+                </datalist>
+                <output for="fader" id="miles">5 Miles</output>
+            </section>
+        </section>
+
+        <section id="response" class="col-sm-3 pull-right">
+            <button type="button" id="accept" class="btn btn-success btn-lg"><span class="glyphicon glyphicon-ok"></span> Give me directions! </button>
+
+            <button type="button" id="decline" class="btn btn-danger btn-lg"> Not interested <span class="glyphicon glyphicon-remove"></span></button>
+
+            <div id="visited">
+                <p>Have you already been here?</p>
+                <input type="button" id="yes" class="btn btn-success" value="Yes"/>
+                <input type="button" id="no" class="btn btn-danger"value="No"/>
+            </div>
         </section>
     </section>
-    
-    <footer>
-        
-    </footer>
+</div>
+
+<footer>
+
+</footer>
     
     <section id="postScripts">
         <script src="Assets/JS/initMap.js"></script>  
         <script src="Assets/JS/TestBtn.js"></script>
     </section>
 </body>
+

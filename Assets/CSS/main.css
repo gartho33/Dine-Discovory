@@ -1,9 +1,61 @@
+html{
+
+}
+
 body{
-    
+    margin: 0 auto 0;
+
+}
+
+.container{
+    width: 970px !important;
 }
 
 #map{
-    width: 500px;
-    height: 400px;
+    width: 550px;
+    height: 500px;
     background-color: #ccc;
+    border-radius: 10px;
+}
+
+#sidePanel{
+    width: 400px;
+}
+#sidePanel h4{
+    padding: 10px;
+}
+#sidePanel p{
+    text-align: center;
+}
+
+.foodChecks{
+    font-size: 14pt;
+}
+
+.table tr td{
+    border: none !important;
+}
+
+#response{
+    width: 400px;
+    padding: 20px 0px;
+    margin-top: 50px;
+    text-align: center;
+    display: none;
+}
+
+#visited{
+    padding: 15px;
+}
+
+.uiTest{
+    width: 300px;
+    padding: 15px;
+    margin: 0 auto 0;
+    text-align: center;
+}
+
+.uiTest label{
+    font-weight: 100;
+    padding: 10px;
 }
