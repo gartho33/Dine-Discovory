@@ -15,7 +15,7 @@
         <h1>Dine-Discovery</h1>
     </header>
 
-    <section class="row">
+    <div class="row">
         <section id="main" class="col-xs-6 pull-left">
             <div id="map"></div>
 
@@ -97,21 +97,22 @@
                     <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search!
                 </button>
             </div>
-
         </section>
 
-        <section id="response" class="col-sm-3 pull-right">
-            <button type="button" id="accept" class="btn btn-success btn-lg"><span class="glyphicon glyphicon-ok"></span> Give me directions! </button>
+    </div>
 
-            <button type="button" id="decline" class="btn btn-danger btn-lg"> Not interested <span class="glyphicon glyphicon-remove"></span></button>
+    <section id="response" class="col-sm-3">
+        <button type="button" id="accept" class="btn btn-success btn-lg pull-left"><span class="glyphicon glyphicon-ok"></span> Give me directions! </button>
 
-            <div id="visited">
-                <p>Have you already been here?</p>
-                <input type="button" id="yes" class="btn btn-success" value="Yes"/>
-                <input type="button" id="no" class="btn btn-danger"value="No"/>
-            </div>
-        </section>
+        <button type="button" id="decline" class="btn btn-danger btn-lg pull-right"> Not interested <span class="glyphicon glyphicon-remove"></span></button>
+
+        <div id="visited">
+            <p>Have you already been here?</p>
+            <button type="button" id="yes" class="btn btn-success"> Yes </button>
+            <button type="button" id="no" class="btn btn-danger"> No </button>
+        </div>
     </section>
+
 </div>
 
 <footer>

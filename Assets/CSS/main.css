@@ -37,15 +37,19 @@ body{
 }
 
 #response{
-    width: 400px;
-    padding: 20px 0px;
-    margin-top: 50px;
+    width: 550px;
+    padding: 10px 0px;
     text-align: center;
     display: none;
 }
 
 #visited{
     padding: 15px;
+    clear: both;
+    display: none;
+}
+#visited button{
+    margin: 10px;
 }
 
 .uiTest{
