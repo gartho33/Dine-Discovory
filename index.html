@@ -74,11 +74,8 @@
             </table>
 
             <p>None of those interest you? Search for a new taste!</p>
-            <div class="input-group">
+            <div class="form-group">
                 <input type="text" id="keywordInput" class="form-control" placeholder="Search"/>
-                        <span class="input-group-btn">
-                        <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Go!</button>
-                      </span>
             </div>
 
             <section class="uiTest">
@@ -92,8 +89,15 @@
                     <option>75</option>
                     <option>100</option>
                 </datalist>
-                <output for="fader" id="miles">5 Miles</output>
+                <output for="fader" id="miles">Within 5 Miles</output>
             </section>
+
+            <div class="btnContain">
+                <button type="button" class="btn btn-default">
+                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search!
+                </button>
+            </div>
+
         </section>
 
         <section id="response" class="col-sm-3 pull-right">

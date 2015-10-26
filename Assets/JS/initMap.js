@@ -8,6 +8,13 @@ function initialize(){
     var mapCanvas = document.getElementById('map');
     var mapOptions = {
         zoom: 15,
+        panControl:true,
+        zoomControl:true,
+        mapTypeControl:true,
+        scaleControl:true,
+        streetViewControl:true,
+        overviewMapControl:true,
+        rotateControl:true,
         mapTypeId: google.maps.MapTypeId.ROADMAP
     }
     map = new google.maps.Map(mapCanvas, mapOptions);

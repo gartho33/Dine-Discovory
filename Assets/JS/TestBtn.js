@@ -3,5 +3,5 @@ $("#testBtn").on('click', function(){
 });
 
 function outputUpdate(miles) {
-   document.querySelector('#miles').value = miles + " Miles";
+   document.querySelector('#miles').value = "Within " + miles + " Miles";
 }

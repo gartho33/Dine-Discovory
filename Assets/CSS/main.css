@@ -59,3 +59,7 @@ body{
     font-weight: 100;
     padding: 10px;
 }
+
+.btnContain{
+    text-align: center;
+}
