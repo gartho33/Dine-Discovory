@@ -67,3 +67,16 @@ body{
 .btnContain{
     text-align: center;
 }
+
+.visitedResponse{
+    width: 550px;
+    text-align: center;
+}
+
+#ignore{
+    display: none;
+}
+
+#revisit{
+    display: none;
+}

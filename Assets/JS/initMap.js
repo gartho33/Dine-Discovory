@@ -69,7 +69,7 @@ function TestSearch(){
 };
 
 function search(){
-    //use this method to build the needed quary and collect response
+    //use this method to build the needed query and collect response
     /****** FORMAT ********
     var request = { <<<<<< this is what needs to be built <<<<<<<
         location: location, 
@@ -100,8 +100,39 @@ function RandomPick(results){
     var index = Math.floor(Math.random()*results.length);
     console.log(results[index]);
     destination = results[index].formatted_address;
-    onChangeHandler();
     CreateMarker(results[index]);
+    $('#response').show();
+
+    $('#accept').on('click', function(){
+        onChangeHandler();
+        $('#response').hide();
+    });
+    $('#decline').on('click', function(){
+        $('#visited').show();
+        $('#accept').prop('disabled', true);
+        $('#decline').prop('disabled', true);
+
+        $('#yes').on('click', function(){
+            $('#ignore').show();
+            //Add place to favorites
+        });
+        $('#no').on('click', function(){
+            $('#response').hide();
+            $('#revisit').show();
+            setTimeout(function(){
+                $('#revisit').hide();
+                resetResponse();
+                TestSearch();
+            }, 3000);
+        });
+    });
+
+};
+
+function resetResponse(){
+    $('#visited').hide();
+    $('#accept').prop('disabled', false);
+    $('#decline').prop('disabled', false);
 };
 
 function CreateMarker(place){
@@ -120,21 +151,27 @@ function CreateMarker(place){
          });
         markers.push(marker);
         //populate the info window
-        google.maps.event.addListener(marker, 'mouseover', function(){
+        google.maps.event.addListener(marker, 'click', function(){
             var info = BuildInfowindow(place);
             infoWindow.setContent(info);
             infoWindow.open(map, this);
         });
-        google.maps.event.addListener(marker, 'mouseout', function(){
-            infoWindow.close();
-        });
+
+        //show the infoWindow by default, rather than mouseover
+        var info = BuildInfowindow(place);
+        infoWindow.setContent(info);
+        infoWindow.open(map, marker);
+
+        //google.maps.event.addListener(marker, 'mouseout', function(){
+        //    infoWindow.close();
+        //});
     };
 
 function BuildInfowindow(place){
     var info = "";
     info += "<h1>"+place.name+"</h1>";
     info += "<p>"+place.formatted_address+"</p>";
-    info += place.opening_hours.open_now ? "Open" : "Closed"
+    info += place.opening_hours.open_now ? "Open" : "Closed";
 
     return info;
 };
